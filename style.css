@@ -6,7 +6,8 @@
 /* hero background image */
 .bgimage {
     height:100vh;
-    background: url('images/MelRibeiro - Overview.gif');
+    /*background: url('images/MelRibeiro - Overview.gif'); Hello world gif background */ 
+	background: url('Art.jpg');
     background-size:contain;
     position:unset;
 }
@@ -35,6 +36,11 @@
 } */
 #contact {
     padding-bottom: 4rem;
+	background-color:#212529;
+}
+#portfolio{
+	
+	background-color:#212529;
 }
 /* about section image css */
 .imageAboutPage {
@@ -117,13 +123,14 @@ a.btn.btn-success {
 
 body {
   position: relative;
-  background: url('http://thecodeplayer.com/u/m/b1.png') no-repeat center center fixed;
+ /* background: url('http://thecodeplayer.com/u/m/b1.png') no-repeat center center fixed; */
   background-size: cover;
   min-width: 500px;
   min-height: 200px;
   color: #fff;
   font-family: 'Montserrat';
   height:100vmax;
+  background-color:#212529;
 
 }
 
@@ -194,8 +201,9 @@ span::after {
 }
 
 #nav a {
-  background-color:#018F82;
+  background-color:#212529;
   color: black;
+  font-size: larger;
   text-decoration: none;
   line-height: 70vw;
   position: absolute;
@@ -303,7 +311,15 @@ nav.visible li:last-child a {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  background-color:#212529;
 }
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #212529 !important;  /* Backgroud color for the portfolio page  */
+}
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: #212529 !important; /* Backgroud color for the about  page  */
 
 h1 {
   font-size: 60px;
