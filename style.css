@@ -38,6 +38,9 @@
     padding-bottom: 4rem;
 	background-color:#212529;
 }
+.contact-info{
+	color:white
+} 
 #portfolio{
 	
 	background-color:#212529;
@@ -82,6 +85,10 @@ h3 {
 }
 .card-title {
     text-align: center;
+	color:black
+}
+.card-text {
+	color:black;
 }
 .card:hover .servicesIcon {
     color: #008000;
@@ -131,6 +138,7 @@ body {
   font-family: 'Montserrat';
   height:100vmax;
   background-color:#212529;
+
 
 }
 
@@ -201,7 +209,7 @@ span::after {
 }
 
 #nav a {
-  background-color:#212529;
+  background-color:#1e1e1e;
   color: black;
   font-size: larger;
   text-decoration: none;
@@ -217,7 +225,7 @@ span::after {
 }
 
 #nav a:hover {
-  background: #357FFD;
+  background: teal;
 }
 
 ul {

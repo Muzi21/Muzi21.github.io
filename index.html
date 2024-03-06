@@ -4,12 +4,105 @@
   <title>Portfolio Website</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/31149d48b0.js" crossorigin="anonymous"></script>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat|Bitter'>
   <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Additional Styling */
+    body {
+         background:linear-gradient(to top left, #212529 0%, #212529 60%, teal 60%, teal 100%);
+      color: #dcdcdc; /* Light grey text color */
+      font-family: 'Montserrat', sans-serif; /* Montserrat font */
+      height: 100vh; /* Full height */
+	  padding: 0;
+      margin: 0; /* Remove default margin */
+      display: flex; /* Flex layout */
+      align-items: center; /* Center vertically */
+      justify-content: center; /* Center horizontally */
+    }
+
+    .container {
+      text-align: center; /* Center content */
+    }
+
+    .hero-text h2 {
+      font-size: 3rem; /* Large font size */
+      margin-bottom: 1rem; /* Add spacing */
+    }
+
+    .hero-text p {
+      font-size: 1.2rem; /* Medium font size */
+      margin-bottom: 1rem; /* Add spacing */
+    }
+
+    .button {
+      padding: 15px 30px; /* Increase padding */
+      font-size: 1.2rem; /* Medium font size */
+      font-weight: bold; /* Bold text */
+      background-color: #018F82; /* Green button */
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      color: #fff; /* White text color */
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:hover {
+      background-color: #303030; /* Darker green on hover */
+      transform: translateY(-2px); /* Move slightly on hover */
+      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #282828, #1e1e1e); /* Darker gradient */
+      border-radius: 60px;
+      z-index: -1;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .button:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Navbar Styling */
+    #nav {
+      background-color: #1e1e1e; /* Dark grey background */
+    }
+
+    #nav ul li a {
+      color: #dcdcdc; /* Light grey text color */
+    }
+
+    .shape-circle a:hover {
+      color: #018F82; /* Green text color on hover */
+    }
+
+    .shape-circle {
+      border: 2px solid #018F82; /* Green border */
+    }
+
+    .shape-circle a {
+      color: #dcdcdc; /* Light grey text color */
+    }
+
+    .shape-circle a:hover {
+      color: #018F82; /* Green text color on hover */
+    }
+  </style>
 </head>
 <body>
 <div class="bars" id="nav-action">
@@ -28,113 +121,20 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text text-center">
       <h2 class="mb-3">Hi there, I'm Vusumuzi Mkhatshwa</h2>
       <p class="mb-3">A software and web developer passionate about building user-friendly websites and crafting innovative software solutions.</p>
+
       <p class="mb-4">Welcome to my Portfolio</p>
       <button class="button" onclick="window.location.href='AboutMe.html';">More About Me</button>
     </div>
   </div>
 </div>
-<style>
- body {
-  position: inherit;
-  background: url('images/Imponeren.jpg'); no-repeat center center fixed;
-  background-size: cover;
-  min-width: 500px;
-  min-height: 200px;
-  color: #fff;
-  font-family: 'Montserrat';
-  height:100vmax;
-}
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    background-color: #018F82;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .button:hover {
-    background-color: black;
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  .button::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: linear-gradient(45deg, black, blue);
-    border-radius: 60px;
-    z-index: -1;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .button:hover::before {
-    opacity: 1;
-    transform: scale(1);
-  }
-</style>
 <footer id="footer" class="text-center mt-5">
   <div class="social-icons mt-4">
     <a href="https://github.com/Muzi21" target="_blank"><i class="fa fa-github"></i></a>
     <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://wa.me/+27730779351" target="_blank"><i class="fa fa-whatsapp"></i></a>
   </div>
+      
 </footer>
 <script src="./script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
