@@ -105,14 +105,24 @@ a.btn.btn-success {
 .social-icons {
     font-size: 36px;
     cursor: pointer;
-}
-.fa-facebook:hover,.fa-instagram:hover,.fa-twitter:hover,.fa-linkedin:hover, .fa-twitch:hover {
-    color: #008000;
-}
-.fab {
-    color: #000000;
+	color:black;
 }
 
+.fa.fa-github:hover,.fa-linkedin:hover,.fa.fa-whatsapp:hover {
+    color: teal;
+}
+.fab {
+    color: black;
+}
+.fab:hover {
+    color: teal;
+}
+.fa.fa-whatsapp{
+	color : black;
+}
+.fa.fa-github{
+	color:black;
+}
 
 /* footer styling */
 #footer {
