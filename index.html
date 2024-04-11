@@ -12,7 +12,7 @@
   <style>
     /* Additional Styling */
     body {
-         background:linear-gradient(to top left, #212529 0%, #212529 60%, teal 60%, teal 100%);
+         background:linear-gradient(to top left, #212529 0%, #212529 65%, teal 65%, teal 100%);
       color: #dcdcdc; /* Light grey text color */
       font-family: 'Montserrat', sans-serif; /* Montserrat font */
       height: 100vh; /* Full height */
@@ -25,12 +25,17 @@
 
     .container {
       text-align: center; /* Center content */
+	  display:flex;
     }
 
     .hero-text h2 {
       font-size: 3rem; /* Large font size */
       margin-bottom: 1rem; /* Add spacing */
+	  display:inline;
     }
+	#name{
+	color:teal;
+	}
 
     .hero-text p {
       font-size: 1.2rem; /* Medium font size */
@@ -119,7 +124,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text text-center">
-      <h2 class="mb-3">Hi there, I'm Vusumuzi Mkhatshwa</h2>
+      <h2>Hi there,</h2>
+	  <h2 id ="name"> Vusumuzi </h2>
+	  <h2> Mkhatshwa </h2>
+	  
       <p class="mb-3">A software and web developer passionate about building user-friendly websites and crafting innovative software solutions.</p>
 
       <p class="mb-4">Welcome to my Portfolio</p>
