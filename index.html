@@ -38,14 +38,14 @@
   background-clip: text; /* Clip the background to the text */
   color: transparent; /* Hide the text */
   /* Apply animation */
-  animation: fillText 8s linear infinite;
+  animation: fillText 7s linear infinite alternate; /* Adjust duration to 4s for the complete cycle */
     }
 @keyframes fillText {
   0% {
-    background-position: -100% 0;
+    background-position: 100% 0;;
   }
   100% {
-    background-position: 200% 0;
+    background-position: 0 0;
   }
 }
 
