@@ -29,10 +29,26 @@
     }
 
     .hero-text h2 {
-      font-size: 3rem; /* Large font size */
-      margin-bottom: 1rem; /* Add spacing */
-	  display:inline;
+    font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline;
+  /* Apply gradient background for fill-up effect */
+  background-image: linear-gradient(to right, white 50%, transparent 50%);
+  background-size: 200% 100%; /* Make the gradient twice as wide as the container */
+  background-clip: text; /* Clip the background to the text */
+  color: transparent; /* Hide the text */
+  /* Apply animation */
+  animation: fillText 8s linear infinite;
     }
+@keyframes fillText {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 	#name{
 	color:teal;
 	}
