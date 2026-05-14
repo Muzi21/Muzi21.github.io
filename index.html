@@ -1,164 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Portfolio Website</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/31149d48b0.js" crossorigin="anonymous"></script>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat|Bitter'>
-  <link rel="stylesheet" href="./style.css">
-  <style>
-    /* Additional Styling */
-    body {
-         background:linear-gradient(to top left, #212529 0%, #212529 65%, teal 65%, teal 100%);
-      color: #dcdcdc; /* Light grey text color */
-      font-family: 'Montserrat', sans-serif; /* Montserrat font */
-      height: 100vh; /* Full height */
-	  padding: 0;
-      margin: 0; /* Remove default margin */
-      display: flex; /* Flex layout */
-      align-items: center; /* Center vertically */
-      justify-content: center; /* Center horizontally */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vusumuzi Mkhatshwa</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf8;
+  --bg2:#f4f3f0;
+  --surface:#ffffff;
+  --text:#1a1a18;
+  --muted:#7a7a72;
+  --hint:#b0afa8;
+  --accent:#2a6b50;
+  --accent-light:#edf5f1;
+  --border:#e8e7e2;
+  --serif:'Instrument Serif',serif;
+  --sans:'Geist','DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;overflow-x:hidden}
 
-    .container {
-      text-align: center; /* Center content */
-	  display:flex;
-    }
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(250,250,248,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;color:var(--text);letter-spacing:-0.01em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;transition:color 0.2s;font-weight:400}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  font-size:0.8rem;padding:0.45rem 1.1rem;
+  border:1px solid var(--border);color:var(--text);background:var(--surface);
+  cursor:pointer;text-decoration:none;transition:all 0.18s;border-radius:6px;font-weight:500
+}
+.nav-cta:hover{border-color:var(--text)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all 0.3s}
+.mobile-menu{
+  display:none;position:sticky;top:61px;z-index:99;
+  background:rgba(250,250,248,0.97);border-bottom:1px solid var(--border);
+  padding:1.25rem 2.5rem;flex-direction:column;gap:1rem
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:0.95rem}
 
-    .hero-text h2 {
-    font-size: 3rem;
-  margin-bottom: 1rem;
-  display: inline;
-  /* Apply gradient background for fill-up effect */
-  background-image: linear-gradient(to right, white 50%, transparent 50%);
-  background-size: 200% 100%; /* Make the gradient twice as wide as the container */
-  background-clip: text; /* Clip the background to the text */
-  color: transparent; /* Hide the text */
-  /* Apply animation */
-  animation: fillText 4s linear infinite alternate; /* Adjust duration to 4s for the complete cycle */
-    }
-@keyframes fillText {
-  0% {
-    background-position: 100% 0;;
-  }
-  100% {
-    background-position: 0 0;
-  }
+.hero{
+  min-height:88vh;display:flex;align-items:center;
+  padding:5rem 2.5rem 4rem;
+  max-width:1000px;margin:0 auto;
+}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;width:100%}
+.hero-tag{
+  font-size:0.78rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;
+  font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.6rem
+}
+.hero-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+h1{
+  font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);
+  font-weight:400;line-height:1.08;letter-spacing:-0.02em;margin-bottom:1.5rem;color:var(--text)
+}
+h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:440px;margin-bottom:2.5rem;line-height:1.75}
+.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.5rem;background:var(--text);color:var(--bg);
+  text-decoration:none;font-weight:500;font-size:0.875rem;
+  border-radius:6px;transition:all 0.18s;border:1px solid var(--text)
+}
+.btn-primary:hover{background:#2d2d2b}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  padding:0.7rem 1.5rem;border:1px solid var(--border);
+  color:var(--muted);text-decoration:none;font-size:0.875rem;
+  border-radius:6px;transition:all 0.18s
+}
+.btn-ghost:hover{border-color:var(--muted);color:var(--text)}
+.hero-aside{display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end}
+.side-link{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:0.7rem;color:var(--hint);text-decoration:none;letter-spacing:0.12em;
+  text-transform:uppercase;transition:color 0.2s;padding:0.5rem 0
+}
+.side-link:hover{color:var(--accent)}
+
+section{padding:5.5rem 2.5rem}
+.container{max-width:1000px;margin:0 auto}
+.section-label{
+  font-size:0.72rem;color:var(--hint);letter-spacing:0.15em;
+  text-transform:uppercase;font-weight:500;margin-bottom:0.6rem
+}
+.section-title{
+  font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);
+  font-weight:400;letter-spacing:-0.02em;margin-bottom:3rem;color:var(--text)
 }
 
-	#name{
-	color:teal;
-	}
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:5rem;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:1.1rem;line-height:1.8;font-size:0.975rem}
+.about-meta{display:flex;flex-direction:column;gap:0}
+.meta-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.875rem
+}
+.meta-row:first-child{border-top:1px solid var(--border)}
+.meta-key{color:var(--hint)}
+.meta-val{color:var(--text);font-weight:500}
+.meta-val.accent{color:var(--accent)}
 
-    .hero-text p {
-      font-size: 1.2rem; /* Medium font size */
-      margin-bottom: 1rem; /* Add spacing */
-    }
+.skills-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:2rem}
+.skill-row{
+  background:var(--surface);padding:1rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  border-bottom:1px solid var(--border);transition:background 0.15s
+}
+.skill-row:last-child{border-bottom:none}
+.skill-row:hover{background:var(--bg)}
+.skill-left{display:flex;align-items:center;gap:0.75rem}
+.skill-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.skill-name{font-size:0.9rem;font-weight:500}
+.skill-right{display:flex;align-items:center;gap:0.75rem}
+.bar-wrap{width:80px;height:2px;background:var(--border);border-radius:1px}
+.bar-fill{height:100%;background:var(--accent);border-radius:1px}
+.skill-pct{font-size:0.72rem;color:var(--hint);width:28px;text-align:right}
 
-    .button {
-      padding: 15px 30px; /* Increase padding */
-      font-size: 1.2rem; /* Medium font size */
-      font-weight: bold; /* Bold text */
-      background-color: #018F82; /* Green button */
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      color: #fff; /* White text color */
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-      position: relative;
-      overflow: hidden;
-    }
+.projects-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:2rem}
+.project-row{
+  background:var(--surface);padding:1.5rem 1.75rem;
+  display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;
+  border-bottom:1px solid var(--border);text-decoration:none;color:inherit;
+  transition:background 0.15s;cursor:pointer
+}
+.project-row:last-child{border-bottom:none}
+.project-row:hover{background:var(--bg)}
+.project-row:hover .proj-arrow{transform:translateX(3px)}
+.proj-num{font-size:0.72rem;color:var(--hint);font-weight:500;width:20px}
+.proj-body{}
+.proj-title{font-size:0.975rem;font-weight:500;margin-bottom:0.25rem}
+.proj-meta{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;margin-top:0.4rem}
+.proj-tag{
+  font-size:0.68rem;padding:0.15rem 0.55rem;
+  background:var(--accent-light);color:var(--accent);
+  border-radius:4px;font-weight:500
+}
+.proj-desc{font-size:0.85rem;color:var(--muted);margin-top:0.3rem}
+.proj-arrow{color:var(--hint);font-size:1rem;transition:transform 0.2s}
 
-    .button:hover {
-      background-color: #303030; /* Darker green on hover */
-      transform: translateY(-2px); /* Move slightly on hover */
-      box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-    }
+.contact-section{background:var(--bg2);border-radius:12px;padding:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.contact-heading{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;letter-spacing:-0.02em;margin-bottom:0.75rem}
+.contact-sub{color:var(--muted);font-size:0.9rem;line-height:1.7}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.clink{
+  display:flex;align-items:center;gap:1rem;
+  text-decoration:none;color:var(--text);padding:0.9rem 1.1rem;
+  border:1px solid var(--border);border-radius:8px;background:var(--surface);
+  font-size:0.875rem;transition:all 0.15s
+}
+.clink:hover{border-color:var(--accent);color:var(--accent)}
+.clink-icon{font-size:0.7rem;color:var(--hint);width:16px;text-align:center;font-weight:600;letter-spacing:0.05em}
+.clink-label{flex:1}
+.clink-arrow{color:var(--hint);font-size:0.75rem}
 
-    .button::before {
-      content: "";
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      background: linear-gradient(45deg, #282828, #1e1e1e); /* Darker gradient */
-      border-radius: 60px;
-      z-index: -1;
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
+footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;display:flex;justify-content:space-between;align-items:center;max-width:100%}
+.footer-name{font-family:var(--serif);font-size:0.95rem;color:var(--muted)}
+.footer-copy{font-size:0.75rem;color:var(--hint)}
 
-    .button:hover::before {
-      opacity: 1;
-      transform: scale(1);
-    }
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-tag{animation:fadeUp 0.5s 0.1s both}
+h1{animation:fadeUp 0.5s 0.2s both}
+.hero-desc{animation:fadeUp 0.5s 0.3s both}
+.hero-actions{animation:fadeUp 0.5s 0.4s both}
 
-    /* Navbar Styling */
-    #nav {
-      background-color: #1e1e1e; /* Dark grey background */
-    }
-
-    #nav ul li a {
-      color: #dcdcdc; /* Light grey text color */
-    }
-
-    .shape-circle a:hover {
-      color: #018F82; /* Green text color on hover */
-    }
-
-    .shape-circle {
-      border: 2px solid #018F82; /* Green border */
-    }
-
-    .shape-circle a {
-      color: #dcdcdc; /* Light grey text color */
-    }
-
-    .shape-circle a:hover {
-      color: #018F82; /* Green text color on hover */
-    }
-  </style>
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  nav{padding:1rem 1.25rem}
+  .hero{padding:4rem 1.25rem 3rem;min-height:auto}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-aside{display:none}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  section{padding:4rem 1.25rem}
+  .contact-section{grid-template-columns:1fr;gap:2rem;padding:2rem}
+  .project-row{grid-template-columns:auto 1fr auto;gap:1rem;padding:1.25rem}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem}
+}
+</style>
 </head>
 <body>
-<div class="bars" id="nav-action">
-  <span class="bar"> </span>
-</div>
-<nav id="nav">
-  <ul>
-    <li class="shape-circle circle-one"><a href="Contact.html">Contact</a></li>
-    <li class="shape-circle circle-two"><a href="Portfolio.html">Portfolio</a></li>
-    <li class="shape-circle circle-three"><a href="AboutMe.html">About</a></li>
-    <li class="shape-circle circle-five"><a href="index.html">Home</a></li>
-  </ul>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text text-center">
-      <h2>Hi there, I'm</h2>
-	  <h2 id ="name"> Vusumuzi </h2>
-	  <h2> Mkhatshwa </h2>
-	  
-      <p class="mb-3">A software and web developer passionate about building user-friendly websites and crafting innovative software solutions.</p>
 
-      <p class="mb-4">Welcome to my Portfolio</p>
-      <button class="button" onclick="window.location.href='AboutMe.html';">More About Me</button>
+<nav>
+  <span class="nav-logo">Vusumuzi M.</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://muzi21.github.io/Vusumuzi%20Mkhatshwa's%20CV.pdf" class="nav-cta" target="_blank">Download CV</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://muzi21.github.io/Vusumuzi%20Mkhatshwa's%20CV.pdf" target="_blank">Download CV</a>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Software & Web Developer</div>
+      <h1>Vusumuzi<br><em>Mkhatshwa</em></h1>
+      <p class="hero-desc">I build user-friendly websites and craft innovative software solutions — combining clean code with thoughtful design.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View projects →</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-aside">
+      <a href="https://github.com/Muzi21" target="_blank" class="side-link">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" class="side-link">LinkedIn</a>
+      <a href="https://wa.me/+27730779351" target="_blank" class="side-link">WhatsApp</a>
     </div>
   </div>
 </div>
-<footer id="footer" class="text-center mt-5">
-  <div class="social-icons mt-4">
-    <a href="https://github.com/Muzi21" target="_blank"><i class="fa fa-github"></i></a>
-    <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://wa.me/+27730779351" target="_blank"><i class="fa fa-whatsapp"></i></a>
+
+<section id="about" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="section-title">A bit about me</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a graduate in Information Technology with a specialisation in Software Development. My background spans Java application development, full-stack web development, database management, and building end-to-end solutions.</p>
+        <p>I'm enthusiastic, hardworking, and bring strong technical skills alongside excellent problem-solving ability. I thrive in collaborative environments and love turning complex problems into elegant, user-friendly experiences.</p>
+        <a href="https://muzi21.github.io/Vusumuzi%20Mkhatshwa's%20CV.pdf" class="btn-ghost" style="margin-top:1.25rem;display:inline-flex" target="_blank">Download CV ↓</a>
+      </div>
+      <div class="about-meta">
+        <div class="meta-row"><span class="meta-key">Name</span><span class="meta-val">Vusumuzi Mkhatshwa</span></div>
+        <div class="meta-row"><span class="meta-key">Age</span><span class="meta-val">23</span></div>
+        <div class="meta-row"><span class="meta-key">Role</span><span class="meta-val">Software Developer</span></div>
+        <div class="meta-row"><span class="meta-key">Location</span><span class="meta-val">South Africa</span></div>
+        <div class="meta-row"><span class="meta-key">Status</span><span class="meta-val accent">Open to work</span></div>
+      </div>
+    </div>
   </div>
-      
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <div class="section-title">Tech I work with</div>
+    <div class="skills-list">
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">HTML & CSS</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">JavaScript</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:75%"></div></div><span class="skill-pct">75%</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">Java</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:70%"></div></div><span class="skill-pct">70%</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">C#</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:65%"></div></div><span class="skill-pct">65%</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">PHP</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:60%"></div></div><span class="skill-pct">60%</span></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-left"><div class="skill-dot"></div><span class="skill-name">MySQL & Oracle</span></div>
+        <div class="skill-right"><div class="bar-wrap"><div class="bar-fill" style="width:65%"></div></div><span class="skill-pct">65%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <div class="section-title">Selected work</div>
+    <div class="projects-list">
+      <a class="project-row" href="https://github.com/Muzi21/Bookstore-Website.git" target="_blank">
+        <span class="proj-num">01</span>
+        <div class="proj-body">
+          <div class="proj-title">Bookstore Website</div>
+          <div class="proj-desc">Full-featured online bookstore with dynamic listings and backend data management.</div>
+          <div class="proj-meta"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">PHP</span></div>
+        </div>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="project-row" href="https://muzi21.github.io/projects/CharlotteCelebrations/index.html" target="_blank">
+        <span class="proj-num">02</span>
+        <div class="proj-body">
+          <div class="proj-title">Charlotte Celebrations</div>
+          <div class="proj-desc">Polished event planning website with smooth interactions and professional design.</div>
+          <div class="proj-meta"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span></div>
+        </div>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="project-row" href="https://github.com/Muzi21/Matavha-Student-Management-Web.git" target="_blank">
+        <span class="proj-num">03</span>
+        <div class="proj-body">
+          <div class="proj-title">School Management System</div>
+          <div class="proj-desc">Comprehensive student management app with records, tracking, and admin tools.</div>
+          <div class="proj-meta"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span class="proj-tag">JavaScript</span><span class="proj-tag">PHP</span></div>
+        </div>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="project-row" href="https://muzi21.github.io/projects/Calculator.html" target="_blank">
+        <span class="proj-num">04</span>
+        <div class="proj-body">
+          <div class="proj-title">Scientific Calculator</div>
+          <div class="proj-desc">Clean, fully functional scientific calculator built with pure HTML and CSS.</div>
+          <div class="proj-meta"><span class="proj-tag">HTML</span><span class="proj-tag">CSS</span></div>
+        </div>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="project-row" href="https://github.com/Muzi21/Scrabble-Game.git" target="_blank">
+        <span class="proj-num">05</span>
+        <div class="proj-body">
+          <div class="proj-title">Scrabble Game</div>
+          <div class="proj-desc">Full Java implementation of Scrabble with game logic, scoring, and player management.</div>
+          <div class="proj-meta"><span class="proj-tag">Java</span></div>
+        </div>
+        <span class="proj-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-section">
+      <div>
+        <div class="section-label" style="margin-bottom:0.75rem">Contact</div>
+        <div class="contact-heading">Let's work<br><em style="font-style:italic">together</em></div>
+        <p class="contact-sub">Currently open to freelance work and full-time opportunities. Feel free to reach out.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://wa.me/+27730779351" class="clink" target="_blank">
+          <span class="clink-icon">WA</span>
+          <span class="clink-label">+27 73 077 9351</span>
+          <span class="clink-arrow">↗</span>
+        </a>
+        <a href="https://github.com/Muzi21" class="clink" target="_blank">
+          <span class="clink-icon">GH</span>
+          <span class="clink-label">github.com/Muzi21</span>
+          <span class="clink-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/" class="clink" target="_blank">
+          <span class="clink-icon">LI</span>
+          <span class="clink-label">LinkedIn Profile</span>
+          <span class="clink-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Vusumuzi Mkhatshwa</span>
+  <span class="footer-copy">Designed & developed · 2025</span>
 </footer>
-<script src="./script.js"></script>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+function closeMobile(){mobileMenu.classList.remove('open')}
+hamburger.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+</script>
 </body>
 </html>
